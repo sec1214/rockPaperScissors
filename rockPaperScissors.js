@@ -12,16 +12,20 @@ let humanSelection = '';
 const humanScoreDiv = document.getElementById('humanScoreDiv');
 const computerScoreDiv = document.getElementById('computerScoreDiv');
 const announceWinner = document.getElementById('announceWinnerDiv');
+const computerSelectionDiv = document.getElementById('computerSelectionDiv');
+const humanSelectionDiv = document.getElementById('humanSelectionDiv');
 
 //set the style
-humanScoreDiv.style.border = '2px solid purple';
-computerScoreDiv.style.border = '2px solid green';
-announceWinner.style.border = '2px solid yellow';
+//humanScoreDiv.style.border = '2px solid purple';
+//computerScoreDiv.style.border = '2px solid green';
+//announceWinner.style.border = '2px solid yellow';
 
 //pass in the score 
 humanScoreDiv.textContent = "humanScore: " + humanScore;
 computerScoreDiv.textContent = "computerScore: " + computerScore;
 announceWinner.textContent ="ROCK, PAPER, SCISSOR, SHOOT!";
+computerSelectionDiv.textContent = "COMPUTER SELECTS "; 
+humanSelectionDiv.textContent = "HUMAN SELECTS";
 
 // initialize rock, paper and scissors
 const rock = document.querySelector('#rock');
@@ -42,18 +46,19 @@ function determineWinner(){
     if (humanScore > 4){
         confirm(announceWinner.textContent = "Human WINS GAME!!! Final Score: Human: " + humanScore + " Computer: " + computerScore + " PLAY AGAIN?");
     
-    humanScore = 0;
-    computerScore = 0;
+    //humanScore = 0;
+    //computerScore = 0;
     humanScoreDiv.textContent = "humanScore: " + humanScore;
     computerScoreDiv.textContent = "computerScore: " + computerScore;
+
     }
    
 
     if (computerScore > 4){ 
         confirm(announceWinner.textContent = "Computer WINS GAME!!! Final Score: Human: " + humanScore + " Computer: " + computerScore + " PLAY AGAIN?");
     
-    humanScore = 0;
-    computerScore = 0;
+    //humanScore = 0;
+    //computerScore = 0;
     humanScoreDiv.textContent = "humanScore: " + humanScore;
     computerScoreDiv.textContent = "computerScore: " + computerScore;
     }
@@ -108,20 +113,25 @@ function playRound(humanSelection, computerSelection){
  
     if ((humanSelection === "rock") && (computerSelection === "rock")) {
         console.log("Tie Play Again!");
-        announceWinner.textContent = "human selection: " + humanSelection +
-        " computer selection: " + computerSelection + " TIE";
+        announceWinner.textContent = "TIE";
+        computerSelectionDiv.textContent = computerSelection; 
+        humanSelectionDiv.textContent = humanSelection;
         
     } 
         else if((humanSelection === "paper") && (computerSelection === "paper")){
         console.log("Tie Play Again!");
-        announceWinner.textContent = "human selection: " + humanSelection +
-        " computer selection: " + computerSelection + " TIE";    
+        announceWinner.textContent = "TIE";    
+        computerSelectionDiv.textContent = computerSelection; 
+        humanSelectionDiv.textContent = humanSelection;
+
     }
     
     else if ((humanSelection === "scissor") && (computerSelection === "scissor")){
         console.log("Tie Play Again!");
-        announceWinner.textContent = "human selection: " + humanSelection +
-        " computer selection: " + computerSelection + " TIE";
+        announceWinner.textContent = "TIE";
+        computerSelectionDiv.textContent = computerSelection; 
+        humanSelectionDiv.textContent = humanSelection;
+
         
     } 
     else if((humanSelection === "scissor") && (computerSelection === "paper")){
@@ -130,8 +140,10 @@ function playRound(humanSelection, computerSelection){
         console.log(humanScore);
         humanScoreDiv.textContent = "humanScore: " + humanScore;
         computerScoreDiv.textContent = "computerScore: " + computerScore;
-        announceWinner.textContent = "human selection: " + humanSelection +
-        " computer selection: " + computerSelection + " HUMAN WINS ROUND!!!";
+        announceWinner.textContent = "HUMAN WINS ROUND!!!";
+        computerSelectionDiv.textContent = computerSelection;
+        humanSelectionDiv.textContent = humanSelection;
+ 
         determineWinner();
         
     } 
@@ -141,8 +153,10 @@ function playRound(humanSelection, computerSelection){
         console.log(humanScore);
         humanScoreDiv.textContent = "humanScore: " + humanScore;
         computerScoreDiv.textContent = "computerScore: " + computerScore;
-        announceWinner.textContent = "human selection: " + humanSelection +
-        " computer selection: " + computerSelection + " HUMAN WINS ROUND!!!";
+        announceWinner.textContent = "HUMAN WINS ROUND!!!";
+        computerSelectionDiv.textContent = computerSelection; 
+        humanSelectionDiv.textContent = humanSelection;
+
         determineWinner();
     }
     else if ((humanSelection === "paper") && (computerSelection === "rock")) {
@@ -151,8 +165,10 @@ function playRound(humanSelection, computerSelection){
         console.log(humanScore);
         humanScoreDiv.textContent = "humanScore: " + humanScore;
         computerScoreDiv.textContent = "computerScore: " + computerScore;
-        announceWinner.textContent = "human selection: " + humanSelection +
-        " computer selection: " + computerSelection + " HUMAN WINS ROUND!!!";
+        announceWinner.textContent = "HUMAN WINS ROUND!!!";
+        computerSelectionDiv.textContent = computerSelection;
+        humanSelectionDiv.textContent = humanSelection;
+ 
         determineWinner();
         
     } 
@@ -162,8 +178,10 @@ function playRound(humanSelection, computerSelection){
         console.log(computerScore);
         humanScoreDiv.textContent = "humanScore: " + humanScore;
         computerScoreDiv.textContent = "computerScore: " + computerScore;
-        announceWinner.textContent = "human selection: " + humanSelection +
-        " computer selection: " + computerSelection + " COMPUTER WINS ROUND!!!";
+        announceWinner.textContent = "COMPUTER WINS ROUND!!!";
+        computerSelectionDiv.textContent = computerSelection; 
+        humanSelectionDiv.textContent = humanSelection;
+
         determineWinner();
     }
     else if ((humanSelection === "scissor") && (computerSelection === "rock")){
@@ -172,8 +190,10 @@ function playRound(humanSelection, computerSelection){
         console.log(computerScore);
         humanScoreDiv.textContent = "humanScore: " + humanScore;
         computerScoreDiv.textContent = "computerScore: " + computerScore;
-        announceWinner.textContent = "human selection: " + humanSelection +
-        " computer selection: " + computerSelection + " COMPUTER WINS ROUND!!!";
+        announceWinner.textContent = "COMPUTER WINS ROUND!!!";
+        computerSelectionDiv.textContent = computerSelection; 
+        humanSelectionDiv.textContent = humanSelection;
+
         determineWinner();
     } 
     else if((humanSelection === "rock") && (computerSelection === "paper")){
@@ -182,8 +202,10 @@ function playRound(humanSelection, computerSelection){
         console.log(computerScore);
         humanScoreDiv.textContent = "humanScore: " + humanScore;
         computerScoreDiv.textContent = "computerScore: " + computerScore;
-        announceWinner.textContent = "human selection: " + humanSelection +
-        " computer selection: " + computerSelection + " COMPUTER WINS ROUND!!!";
+        announceWinner.textContent ="COMPUTER WINS ROUND!!!";
+        computerSelectionDiv.textContent = computerSelection; 
+        humanSelectionDiv.textContent = humanSelection;
+
         determineWinner();
     }
 } 
