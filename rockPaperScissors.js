@@ -14,18 +14,45 @@ const computerScoreDiv = document.getElementById('computerScoreDiv');
 const announceWinner = document.getElementById('announceWinnerDiv');
 const computerSelectionDiv = document.getElementById('computerSelectionDiv');
 const humanSelectionDiv = document.getElementById('humanSelectionDiv');
+const tagLineDiv = document.getElementById('tagLineId');
 
-//set the style
-//humanScoreDiv.style.border = '2px solid purple';
-//computerScoreDiv.style.border = '2px solid green';
-//announceWinner.style.border = '2px solid yellow';
 
-//pass in the score 
-humanScoreDiv.textContent = "humanScore: " + humanScore;
-computerScoreDiv.textContent = "computerScore: " + computerScore;
-announceWinner.textContent ="ROCK, PAPER, SCISSOR, SHOOT!";
-computerSelectionDiv.textContent = "COMPUTER SELECTS "; 
-humanSelectionDiv.textContent = "HUMAN SELECTS";
+
+//creating images to put into computer and human selection 
+var imgRock = new Image();   // Create new img element
+imgRock.src = 'images/rock.png'; // Set source path
+
+var imgPaper = new Image();   // Create new img element
+imgPaper.src = 'images/paper.jpeg'; // Set source path
+
+var imgScissor = new Image();   // Create new img element
+imgScissor.src = 'images/scissor.jpg'; // Set source path
+
+var imgRock_2 = new Image();   // Create new img element
+imgRock_2.src = 'images/rock_2.png'; // Set source path
+
+var imgPaper_2 = new Image();   // Create new img element
+imgPaper_2.src = 'images/paper_2.jpeg'; // Set source path
+
+var imgScissor_2 = new Image();   // Create new img element
+imgScissor_2.src = 'images/scissor_2.jpg'; // Set source path
+
+
+
+
+
+
+humanScoreDiv.textContent = humanScore;
+computerScoreDiv.textContent = computerScore;
+
+humanScore = 0;
+computerScore = 0;
+
+announceWinner.textContent ="ROCK, PAPER, SCISSOR";
+computerSelectionDiv.textContent = ""; 
+humanSelectionDiv.textContent = "";
+tagLineDiv.textContent ="!!!SHOOT!!!";
+
 
 // initialize rock, paper and scissors
 const rock = document.querySelector('#rock');
@@ -44,23 +71,23 @@ function game(){
 function determineWinner(){
     
     if (humanScore > 4){
-        confirm(announceWinner.textContent = "Human WINS GAME!!! Final Score: Human: " + humanScore + " Computer: " + computerScore + " PLAY AGAIN?");
-    
-    //humanScore = 0;
-    //computerScore = 0;
-    humanScoreDiv.textContent = "humanScore: " + humanScore;
-    computerScoreDiv.textContent = "computerScore: " + computerScore;
+    announceWinner.innerHTML = "!!!HUMAN WINS GAME!!!" + "<br/>" + "Final Score" + "<br/>" + " Human: " + humanScore + "<br/>" +" Computer: " + computerScore + "<br/>" +"PLAY AGAIN?";
+    humanScore = 0;
+    computerScore = 0;
+    humanScoreDiv.textContent =  humanScore;
+    computerScoreDiv.textContent =  computerScore;
+    confirm('PLAY AGAIN?');
 
     }
    
 
     if (computerScore > 4){ 
-        confirm(announceWinner.textContent = "Computer WINS GAME!!! Final Score: Human: " + humanScore + " Computer: " + computerScore + " PLAY AGAIN?");
-    
-    //humanScore = 0;
-    //computerScore = 0;
-    humanScoreDiv.textContent = "humanScore: " + humanScore;
-    computerScoreDiv.textContent = "computerScore: " + computerScore;
+    announceWinner.innerHTML = "!!!COMPUTER WINS GAME!!!" + "<br/>" + "Final Score" + "<br/>" + " Human: " + humanScore + "<br/>" +" Computer: " + computerScore + "<br/>" +"PLAY AGAIN?";
+    humanScore = 0;
+    computerScore = 0;
+    humanScoreDiv.textContent =  humanScore;
+    computerScoreDiv.textContent =  computerScore;
+    confirm('PLAY AGAIN?');
     }
 };
 
@@ -83,7 +110,7 @@ function playerSelection() {
         let humanSelection = 'rock';
         let computerSelection = computerPlay();
         playRound(humanSelection, computerSelection);
-        console.log(humanSelection, computerSelection);
+        
         
     }));
 
@@ -91,7 +118,7 @@ function playerSelection() {
         let humanSelection = 'paper';
         let computerSelection = computerPlay(); 
         playRound(humanSelection, computerSelection);
-        console.log(humanSelection, computerSelection);
+       
         
     }));
 
@@ -99,113 +126,134 @@ function playerSelection() {
         let humanSelection = 'scissor';
         let computerSelection = computerPlay();
         playRound(humanSelection, computerSelection);
-        console.log(humanSelection, computerSelection);
+       
     }));
 }
 
 playerSelection();
 
 
+
+
+
+
 function playRound(humanSelection, computerSelection){
-    
-    console.log("human selection: " + humanSelection);
-    console.log("computer selection: " + computerSelection);
+
+    humanSelectionDiv.replaceChildren();
+    computerSelectionDiv.replaceChildren();
+
  
     if ((humanSelection === "rock") && (computerSelection === "rock")) {
-        console.log("Tie Play Again!");
-        announceWinner.textContent = "TIE";
-        computerSelectionDiv.textContent = computerSelection; 
-        humanSelectionDiv.textContent = humanSelection;
+       
+        humanSelectionDiv.appendChild(imgRock);
+        computerSelectionDiv.appendChild(imgRock_2);
+        announceWinner.innerHTML = humanSelection.toUpperCase() + "          " + computerSelection.toUpperCase();
+        tagLineDiv.textContent = "!!!TIE!!!";
         
     } 
         else if((humanSelection === "paper") && (computerSelection === "paper")){
-        console.log("Tie Play Again!");
-        announceWinner.textContent = "TIE";    
-        computerSelectionDiv.textContent = computerSelection; 
-        humanSelectionDiv.textContent = humanSelection;
-
+        
+        humanSelectionDiv.appendChild(imgPaper);
+        computerSelectionDiv.appendChild(imgPaper_2);
+        announceWinner.innerHTML = humanSelection.toUpperCase() + "          " + computerSelection.toUpperCase();      
+        tagLineDiv.textContent = "!!!TIE!!!";
     }
     
     else if ((humanSelection === "scissor") && (computerSelection === "scissor")){
-        console.log("Tie Play Again!");
-        announceWinner.textContent = "TIE";
-        computerSelectionDiv.textContent = computerSelection; 
-        humanSelectionDiv.textContent = humanSelection;
 
-        
+        humanSelectionDiv.appendChild(imgScissor)
+        computerSelectionDiv.appendChild(imgScissor_2);
+        announceWinner.innerHTML = humanSelection.toUpperCase() + "          " + computerSelection.toUpperCase();
+        tagLineDiv.textContent = "!!!TIE!!!";
     } 
+
     else if((humanSelection === "scissor") && (computerSelection === "paper")){
-        console.log("Human Wins!");
         humanScore++;
-        console.log(humanScore);
-        humanScoreDiv.textContent = "humanScore: " + humanScore;
-        computerScoreDiv.textContent = "computerScore: " + computerScore;
-        announceWinner.textContent = "HUMAN WINS ROUND!!!";
-        computerSelectionDiv.textContent = computerSelection;
-        humanSelectionDiv.textContent = humanSelection;
- 
-        determineWinner();
+
+   
+        announceWinner.innerHTML = "SCISSOR CUTS PAPER";
+        tagLineDiv.textContent = "HUMAN WINS ROUND";
+
+        humanSelectionDiv.appendChild(imgScissor);
+        computerSelectionDiv.appendChild(imgPaper);
+        humanScoreDiv.textContent =  humanScore;
+        computerScoreDiv.textContent = computerScore;
         
+        determineWinner();
+
     } 
     else if ((humanSelection === "rock") && (computerSelection === "scissor")){
-        console.log("Human Wins!");
         humanScore++;
-        console.log(humanScore);
-        humanScoreDiv.textContent = "humanScore: " + humanScore;
-        computerScoreDiv.textContent = "computerScore: " + computerScore;
-        announceWinner.textContent = "HUMAN WINS ROUND!!!";
-        computerSelectionDiv.textContent = computerSelection; 
-        humanSelectionDiv.textContent = humanSelection;
 
+        announceWinner.innerHTML = "ROCK BREAKS SCISSOR";
+        tagLineDiv.textContent = "HUMAN WINS ROUND";
+
+        humanSelectionDiv.appendChild(imgRock);
+        computerSelectionDiv.appendChild(imgScissor);
+        humanScoreDiv.textContent = humanScore;
+        computerScoreDiv.textContent = computerScore;
         determineWinner();
     }
     else if ((humanSelection === "paper") && (computerSelection === "rock")) {
-        console.log("Human Wins!");
         humanScore++;
-        console.log(humanScore);
-        humanScoreDiv.textContent = "humanScore: " + humanScore;
-        computerScoreDiv.textContent = "computerScore: " + computerScore;
-        announceWinner.textContent = "HUMAN WINS ROUND!!!";
-        computerSelectionDiv.textContent = computerSelection;
-        humanSelectionDiv.textContent = humanSelection;
- 
+
+        announceWinner.innerHTML = "PAPER COVERS ROCK";
+        tagLineDiv.textContent = "HUMAN WINS ROUND";
+
+        humanSelectionDiv.appendChild(imgPaper);
+        computerSelectionDiv.appendChild(imgRock);
+        
+
+
+        humanScoreDiv.textContent = humanScore;
+        computerScoreDiv.textContent = computerScore;
+
         determineWinner();
         
     } 
     else if ((humanSelection === "paper") && (computerSelection === "scissor")){
-        console.log("Computer Wins!");
         computerScore++;
-        console.log(computerScore);
-        humanScoreDiv.textContent = "humanScore: " + humanScore;
-        computerScoreDiv.textContent = "computerScore: " + computerScore;
-        announceWinner.textContent = "COMPUTER WINS ROUND!!!";
-        computerSelectionDiv.textContent = computerSelection; 
-        humanSelectionDiv.textContent = humanSelection;
+
+        announceWinner.innerHTML = "SCISSOR CUTS PAPER";
+        tagLineDiv.textContent = "COMPUTER WINS ROUND";
+
+        humanSelectionDiv.appendChild(imgPaper);
+        computerSelectionDiv.appendChild(imgScissor);
+
+
+        humanScoreDiv.textContent = humanScore;
+        computerScoreDiv.textContent = computerScore;
 
         determineWinner();
     }
     else if ((humanSelection === "scissor") && (computerSelection === "rock")){
-        console.log("Computer Wins!");
         computerScore++;
-        console.log(computerScore);
-        humanScoreDiv.textContent = "humanScore: " + humanScore;
-        computerScoreDiv.textContent = "computerScore: " + computerScore;
-        announceWinner.textContent = "COMPUTER WINS ROUND!!!";
-        computerSelectionDiv.textContent = computerSelection; 
-        humanSelectionDiv.textContent = humanSelection;
 
+        announceWinner.innerHTML = "ROCK BREAKS SCISSOR";
+        tagLineDiv.textContent = "COMPUTER WINS ROUND";
+
+        humanSelectionDiv.appendChild(imgScissor);
+        computerSelectionDiv.appendChild(imgRock);
+
+
+        humanScoreDiv.textContent =  humanScore;
+        computerScoreDiv.textContent =  computerScore;
         determineWinner();
     } 
     else if((humanSelection === "rock") && (computerSelection === "paper")){
-        console.log("Computer Wins!");
         computerScore++;
-        console.log(computerScore);
-        humanScoreDiv.textContent = "humanScore: " + humanScore;
-        computerScoreDiv.textContent = "computerScore: " + computerScore;
-        announceWinner.textContent ="COMPUTER WINS ROUND!!!";
-        computerSelectionDiv.textContent = computerSelection; 
-        humanSelectionDiv.textContent = humanSelection;
 
+        announceWinner.innerHTML = "PAPER COVERS ROCK";
+        tagLineDiv.textContent = "COMPUTER WINS ROUND";
+
+        humanSelectionDiv.appendChild(imgRock);
+        computerSelectionDiv.appendChild(imgPaper);
+
+
+
+        humanScoreDiv.textContent =  humanScore;
+        computerScoreDiv.textContent =  computerScore;
         determineWinner();
     }
+
 } 

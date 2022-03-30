@@ -1,40 +1,73 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="styles.css">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="styles.css" />
     <title>Rock Paper Scissort</title>
-</head>
-<body>
+  </head>
+  <body>
+    <div class="wrapper">
+      <div class="border"></div>
 
-<div class="container-1">
-    
-        
-    <button id="rock">ROCK</button>
-    <button id="paper">PAPER</button>  
-    <button id="scissor">SCISSOR</button>
-</div>
+      <div class="header-cotainer">
+        <div class="header">ROCK<br />PAPER <br />SCISSOR</div>
+        <div class="announceWinnerContainer">
+          <div class="announceWinner" id="announceWinnerDiv">
+            announce winner
+          </div>
+          <div class="tagLine" id="tagLineId">play</div>
+        </div>
+      </div>
 
-<div class="container-4">
-    <div id="computerSelectionDiv">computer selects</div>
-    <div id="humanSelectionDiv">Human Selection</div>
-</div>
+      <div class="gamePanel">
+        <div class="box-1">
+          <div class="name" id="human">HUMAN</div>
 
-<div class="container-3">
-    <div id="announceWinnerDiv">announce winner</div>
-</div>
+          <div class="scoreBox">
+            <img class="image" src="images/human.png" alt="human" />
 
-<div class="container-2">
-    <div id="computerScoreDiv">Computer Score</div>
-    <div id="humanScoreDiv">Human Score</div>
-</div>
+            <div class="imagePickRPS-Score">
+              <div class="scoreCounter" id="humanScoreDiv">Human Score</div>
+              <div class="rps-selection" id="humanSelectionDiv"></div>
+            </div>
+          </div>
+        </div>
 
+        <div class="box-1">
+          <div class="name" id="computer">COMPUTER</div>
 
+          <div class="scoreBox">
+            <img class="image" src="images/computer.png" alt="computer" />
 
-    
+            <div class="imagePickRPS-Score">
+              <div class="scoreCounter" id="computerScoreDiv"></div>
+              <div class="rps-selection" id="computerSelectionDiv"></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="box-2">
+          <div class="button-container">
+            <button class="btn" id="rock">ROCK</button>
+            <img src="images/rock.png" alt="rock" />
+          </div>
+
+          <div class="button-container">
+            <button class="btn" id="paper">PAPER</button>
+            <img src="images/paper.jpeg" alt="paper" />
+          </div>
+
+          <div class="button-container">
+            <button class="btn" id="scissor">SCISSOR</button>
+            <img src="images/scissor.jpg" alt="scissor" />
+          </div>
+        </div>
+      </div>
+      <div class="border"></div>
+    </div>
+
     <script type="text/javascript" src="rockPaperScissors.js"></script>
-
-</body>
+  </body>
 </html>
